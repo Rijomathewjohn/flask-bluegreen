@@ -1,0 +1,21 @@
+appName: "flask-bluegreen"
+namespace: "default"
+
+image:
+  repository: "rijomjohn/flask-bluegreen"
+  tagBlue: "v0"
+  tagGreen: "v0"
+  pullPolicy: IfNotPresent
+
+replicas:
+  blue: 2
+  green: 2
+
+# Which color the Service should send traffic to
+activeColor: "blue"
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 5000
+

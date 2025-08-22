@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "flask.fullname" . }}-blue
+  labels:
+    app: {{ include "flask.fullname" . }}
+    color: blue
+spec:
+  replicas: {{ .Values.replicas.blue }}
+  selector:
+    matchLabels:
+      app: {{ include "flask.fullname" . }}
+      color: blue
+  template:
+    metadata:
+      labels:
+        app: {{ include "flask.fullname" . }}
+        color: blue
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tagBlue }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: COLOR
+              value: "blue"
+            - name: VERSION
+              value: "{{ .Values.image.tagBlue }}"
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
