@@ -6,7 +6,7 @@ from pathlib import Path
 
 # ==== CONFIG ====
 APP_NAME = "flask-bluegreen"
-DOCKERHUB_USER = "rijomjohn"
+DOCKERHUB_USER = "your-docker-username"
 IMAGE_REPO = f"{DOCKERHUB_USER}/{APP_NAME}"
 CHART_PATH = "charts/flask-bluegreen"
 NAMESPACE = "default"
