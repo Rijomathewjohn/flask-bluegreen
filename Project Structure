@@ -1,0 +1,17 @@
+flask-bluegreen/
+├── app/
+│   ├── app.py              
+│   ├── requirements.txt    
+│   └── Dockerfile          
+├── charts/
+│   └── flask-bluegreen/    
+│       ├── Chart.yaml
+│       ├── values.yaml
+│       └── templates/
+│           ├── _helpers.tpl
+│           ├── deployment-blue.yaml
+│           ├── deployment-green.yaml
+│           └── service.yaml
+├── scripts/
+│   └── deploy.py           
+└── README.md               
